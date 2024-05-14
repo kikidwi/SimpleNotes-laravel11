@@ -21,15 +21,14 @@
                 <div class="p-2">
                     <h2 class="text-3x1 font-bold">Lists</h2>
                 </div>
-                <div class="border-2 border-black rounded-lg p-1 max-w-50 m-1">
-                    <p class="text-2x1 font-medium text-center">judul note</p>
-                </div>
-                <div class="border-2 border-black rounded-lg p-1 max-w-50 m-1">
-                    <p class="text-2x1 font-medium text-center">judul note</p>
-                </div>
+                @foreach ($notes as $dataNote)
+                    <div class="border-2 border-black rounded-lg p-1 max-w-50 m-1 overflow-hidden">
+                        <p class="text-2x1 font-medium text-center">{{$dataNote->judul}}</p>
+                    </div>
+                @endforeach
             </div>
             <div class="container ml-2">
-                <form action="{{url('insertData')}}" method="POST">
+                <form id="noteForm" action="{{url('insertData')}}" method="post">
                     @csrf
                     <div class="flex flex-row">
                         <div class="col-span-full mr-2">
@@ -38,8 +37,9 @@
                             </div>
                         </div>
                         <div class="mt-2">
-                            <button type="submit" class="rounded-md bg-white px-[110px] py-1 text-sm font-semibold text-gray-900 shadow-sm ring-2 ring-inset ring-black hover:bg-[#D9D9D9]">SAVE</button>
+                            <button type="button" id="showModalButton" data-modal-target="popup-modal" data-modal-toggle="popup-modal" class="rounded-md bg-white px-[110px] py-3 text-sm font-semibold text-gray-900 shadow-sm ring-2 ring-inset ring-black hover:bg-[#D9D9D9]">SAVE</button>
                         </div>
+                        <x-Alert></x-Alert>
                     </div>
                     <div class="col-span-full">
                         <div class="mt-2">
@@ -47,10 +47,12 @@
                         </div>
                     </div>
                 </form>
-
             </div>
         </div>
 
     </div>
+
+    @vite('resources/js/app.js')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 </body>
 </html>

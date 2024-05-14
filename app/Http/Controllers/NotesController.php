@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
+use App\Models\mynotes;
+use DB;
 
 class NotesController extends Controller
 {
@@ -11,13 +14,23 @@ class NotesController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $notes = DB::table('mynotes')->get();
+        // return $notes;
+        return view('home', compact('notes'));
     }
 
     public function insertData(Request $request){
-        dd($request-> all());
-        Notes::create($request-> all());
+        mynotes::create([
+            'judul' => $request->judulNotes,
+            'isi'   => $request->isiNotes
+        ]);
+
+        return redirect()->route('home');
     }
+
+    // public function getData(){
+
+    // }
 
     // /**
     //  * Show the form for creating a new resource.

@@ -16,5 +16,7 @@
             <p class="">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae, quaerat dolores eligendi voluptas, cupiditate repellendus perspiciatis odio ab modi perferendis fuga, molestiae hic. Accusantium labore, quo inventore beatae dignissimos aspernatur.</p>
         </div>
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
 </body>
 </html>
