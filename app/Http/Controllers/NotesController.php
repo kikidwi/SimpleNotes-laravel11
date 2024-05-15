@@ -28,6 +28,13 @@ class NotesController extends Controller
         return redirect()->route('home');
     }
 
+    public function delete($id){
+
+        $idNote = DB::table('mynotes')->where('id', $id);
+        $idNote->delete();
+        return redirect()->route('home')->with('success', 'Item berhasil dihapus');
+    }
+
     // public function getData(){
 
     // }
