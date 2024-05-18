@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 document.addEventListener('DOMContentLoaded', function () {
-    document.getElementById('showModalButton').addEventListener('click', function() {
+    document.getElementById('showModalDeleteButton').addEventListener('click', function() {
         document.getElementById('modalDelete').classList.remove('hidden');
     });
 
@@ -33,3 +33,42 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('listNote').addEventListener('click', function() {
+        document.getElementById('showNote').classList.remove('hidden');
+    });
+
+    document.getElementById('closeNote').addEventListener('click', function() {
+        document.getElementById('showNote').classList.add('hidden');
+    });
+
+    document.querySelectorAll('[data-modal-hide="showNote"]').forEach(button => {
+        button.addEventListener('click', function() {
+            document.getElementById('showNote').classList.add('hidden');
+        });
+    });
+
+});
+
+const form = document.getElementById('saveForm');
+const judulInput = document.getElementById('judul');
+const isiInput = document.getElementById('isi');
+const submitBtn = document.getElementById('showModalButton');
+
+// Function to check if the input is empty
+const checkInput = () => {
+    if ((judulInput.value.trim() === '') && (isiInput.value.trim() === '')) {
+        submitBtn.disabled = true;
+        submitBtn.classList.add('opacity-50', 'cursor-not-allowed');
+    } else {
+        submitBtn.disabled = false;
+        submitBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+    }
+}
+
+// Add event listener to the input field
+judulInput.addEventListener('input', checkInput);
+
+// Initial check
+checkInput();
