@@ -35,21 +35,19 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 document.addEventListener('DOMContentLoaded', function () {
-    document.getElementById('listNote').addEventListener('click', function() {
-        document.getElementById('showNote').classList.remove('hidden');
-    });
 
     document.getElementById('closeNote').addEventListener('click', function() {
-        document.getElementById('showNote').classList.add('hidden');
+        window.history.back();
     });
 
     document.querySelectorAll('[data-modal-hide="showNote"]').forEach(button => {
         button.addEventListener('click', function() {
-            document.getElementById('showNote').classList.add('hidden');
+            window.history.back();
         });
     });
 
 });
+
 
 const form = document.getElementById('saveForm');
 const judulInput = document.getElementById('judul');
@@ -72,3 +70,5 @@ judulInput.addEventListener('input', checkInput);
 
 // Initial check
 checkInput();
+
+

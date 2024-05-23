@@ -15,7 +15,6 @@ class NotesController extends Controller
     public function index()
     {
         $notes = DB::table('mynotes')->get();
-        // return $notes;
         return view('home', compact('notes'));
     }
 
@@ -34,6 +33,13 @@ class NotesController extends Controller
         $idNote->delete();
         return redirect()->route('home')->with('success', 'Item berhasil dihapus');
     }
+
+    public function showNote($id){
+        $idnote = DB::table('mynotes')->where('id', $id)->get();
+        $notes = DB::table('mynotes')->get();
+        return view('note', compact('idnote', 'notes'));
+    }
+
 
     // public function getData(){
 

@@ -8,9 +8,6 @@ use App\Http\Controllers\NotesController;
 // });
 
 
-Route::get('notes', function () {
-    return view('notes');
-});
 
 Route::get('error', function () {
     return view('error');
@@ -20,3 +17,5 @@ Route::get('error', function () {
 Route::post('/insertData',[NotesController::class, 'insertData'])-> name('insertData');
 Route::get('/', [NotesController::class, 'index'])->name('home');
 Route::delete('/dataNote/{id}', [NotesController::class, 'delete'])->name('delete');
+Route::post('/note/{id}', [NotesController::class, 'showNote'])->name('note');
+
